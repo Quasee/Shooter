@@ -1,19 +1,27 @@
-local shooter = CreateFrame("Frame")
+local Shooter = Shooter or {shootOnNextTick = false, delay = 0};
 
-shooter:RegisterEvent("ACHIEVEMENT_EARNED")
+Shooter.frame = CreateFrame("Frame", "Shooter", UIParent);
+Shooter.frame:SetFrameStrata("BACKGROUND");
 
-function shooter:shoot(event, msg)
-  if (event and event == "ACHIEVEMENT_EARNED") then
-    wait(1)
-    TakeScreenshot()
+Shooter.frame:SetScript("OnEvent",
+  function (self, event, ...)
+    if (event and event == "ACHIEVEMENT_EARNED") then
+      Shooter.shootOnNextTick = true;
+      Shooter.delay = 0;
+    end
   end
-end
+);
 
-shooter:SetScript("OnEvent", shooter.shoot)
+Shooter.frame:SetScript("OnUpdate",
+  function (self, elapsed, ...)
+    Shooter.delay = Shooter.delay + elapsed;
+    
+    if (Shooter.shootOnNextTick and Shooter.delay >= 1) then
+      Shooter.shootOnNextTick = false;
+      Shooter.delay = 0;
+      TakeScreenshot();
+    end
+  end
+);
 
-function wait(seconds)
-	local _start = time()
-	local _end = _start+seconds
-	while (_end ~= time()) do
-	end
-end
+Shooter.frame:RegisterEvent("ACHIEVEMENT_EARNED");
