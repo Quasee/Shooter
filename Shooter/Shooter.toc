@@ -1,0 +1,7 @@
+## Interface: 40000
+## Title: Shooter
+## Notes: Takes a screenshot when you earn achievement.
+## Author: Akcent
+## Version: 1.0
+
+Shooter.lua
