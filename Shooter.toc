@@ -2,6 +2,6 @@
 ## Title: Shooter
 ## Notes: Takes a screenshot when you earn an achievement.
 ## Author: Akcent
-## Version: 1.0.3
+## Version: 1.0.4
 
 Shooter.lua
