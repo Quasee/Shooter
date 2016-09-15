@@ -19,7 +19,7 @@ Shooter.frame:SetScript("OnUpdate",
     if (Shooter.shootOnNextTick and Shooter.delay >= 1) then
       Shooter.shootOnNextTick = false;
       Shooter.delay = 0;
-      TakeScreenshot();
+      Screenshot();
     end
   end
 );
