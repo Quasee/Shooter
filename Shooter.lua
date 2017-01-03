@@ -9,4 +9,4 @@ Shooter.frame:SetScript("OnEvent",
   end
 );
 
-Shooter.frame:RegisterEvent("PLAYER_SPECIALIZATION_CHANGED");
+Shooter.frame:RegisterEvent("ACHIEVEMENT_EARNED");
